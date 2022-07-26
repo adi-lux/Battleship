@@ -21,6 +21,5 @@ export class View {
 			this.opponentView,
 		]);
 		this.model.updateObservers();
-		console.log(3);
 	}
 }

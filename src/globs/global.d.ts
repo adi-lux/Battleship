@@ -29,6 +29,7 @@ declare global {
 		playerTwo: PlayerInterface;
 		playerOneBoard: GameBoardTemplate;
 		playerTwoBoard: GameBoardTemplate;
+		gameStart: boolean;
 	}
 	interface ControllerType {
 		model: BattleshipGame;

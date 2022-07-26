@@ -7,12 +7,15 @@ export class Model implements BattleshipGame {
 	playerOneBoard: GameBoard;
 	playerTwoBoard: GameBoard;
 	observers: ViewType[];
+	gameStart: boolean;
+
 	constructor() {
 		this.playerOneBoard = new GameBoard();
 		this.playerTwoBoard = new GameBoard();
 		this.playerOne = new Player('', true, this.playerOneBoard);
 		this.playerTwo = new BattleshipAI(this.playerTwoBoard);
 		this.observers = [];
+		this.gameStart = false;
 	}
 
 	addObservers(newViews: ViewType[]) {

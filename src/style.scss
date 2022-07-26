@@ -13,6 +13,7 @@ $dark-text: #3e3f3e;
 :root {
 	height: 100%;
 	width: 100%;
+	background-color: $dark-light;
 }
 body,
 #game-container {
@@ -20,12 +21,13 @@ body,
 	min-width: 100vw;
 }
 
-#game-container {
+#game-container,
+.dual-board {
 	background-color: $dark-light;
 	display: grid;
 }
 
-.start-screen {
+#start-screen {
 	background-color: $highlight;
 	color: $dark-text;
 	min-height: 60vmin;
@@ -76,5 +78,40 @@ body,
 				box-shadow: 0 0 5px rgba($dark-light, 0.5);
 			}
 		}
+	}
+}
+
+.dual-board {
+	padding: clamp(0, 1%, 10%) 0;
+	gap: 5vmin;
+	place-self: center;
+	align-items: center;
+	grid-template-columns: 1fr 1fr;
+}
+
+#player-side,
+#opponent-side {
+	display: grid;
+	.gameboard {
+		height: clamp(200px, 45vmin, 1000px);
+		width: clamp(200px, 45vmin, 1000px);
+		display: grid;
+		grid-template-columns: repeat(10, 1fr);
+		grid-template-rows: repeat(10, 1fr);
+		border: 5px solid black;
+
+		.cell {
+			border: 0.1rem solid $dark-one;
+		}
+	}
+	.player-name {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.dual-board {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr;
 	}
 }
