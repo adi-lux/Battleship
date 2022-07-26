@@ -1,0 +1,17 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+:root {
+	height: 100%;
+	width: 100%;
+}
+body {
+	height: 100vh;
+	width: 100vh;
+}
+
+#game-container {
+	background-color: red;
+}
