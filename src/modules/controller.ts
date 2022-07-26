@@ -4,10 +4,10 @@ import { StartController } from './controllers/start-controller';
 import { Model } from './model';
 
 export class Controller {
-	model: Model;
-	startController: ControllerType;
-	playerController: ControllerType;
-	opponentController: ControllerType;
+	model;
+	startController;
+	playerController;
+	opponentController;
 
 	constructor(givenModel: Model) {
 		this.model = givenModel;

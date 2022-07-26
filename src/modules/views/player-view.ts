@@ -4,6 +4,7 @@ export class PlayerView implements ViewType {
 	constructor(givenController: ControllerType) {
 		this.controller = givenController;
 	}
+	//buildView() {}
 	updateView(model: BattleshipGame) {
 		return model;
 	}

@@ -1,3 +1,10 @@
+$ship-sunk: #e5cedc;
+$empty-cell: #f3eaf4;
+$highlight: #bca3ac;
+$dark-one: #8f9491;
+$dark-light: #eadde1;
+$dark-text: #3e3f3e;
+
 * {
 	padding: 0;
 	margin: 0;
@@ -7,11 +14,67 @@
 	height: 100%;
 	width: 100%;
 }
-body {
-	height: 100vh;
-	width: 100vh;
+body,
+#game-container {
+	min-height: 100vh;
+	min-width: 100vw;
 }
 
 #game-container {
-	background-color: red;
+	background-color: $dark-light;
+	display: grid;
+}
+
+.start-screen {
+	background-color: $highlight;
+	color: $dark-text;
+	min-height: 60vmin;
+	min-width: 60vmin;
+	box-sizing: border-box;
+	border-radius: 10px;
+	place-self: center;
+	display: grid;
+	grid-template-rows: 150px 2fr;
+	place-items: center;
+	padding: 5%;
+	h1 {
+		font-size: calc(4rem + 20px);
+	}
+	text-align: center;
+
+	form {
+		display: grid;
+		flex-direction: column;
+		align-items: center;
+		justify-content: stretch;
+		grid-template-rows: 2fr 1fr;
+		input[type='text'] {
+			border-radius: 10px;
+			height: clamp(50px, 20vh, 500px);
+			width: clamp(50px, 50vw, 300px);
+			border: $empty-cell;
+			font-size: clamp(15px, calc(4rem + 5px), 50px);
+			text-align: center;
+			color: $dark-text;
+			&:placeholder-shown {
+				font-style: italic;
+			}
+		}
+
+		input[type='submit'] {
+			border: 0;
+			border-radius: 10px;
+			height: clamp(20px, 50px, 100px);
+			background-color: $ship-sunk;
+			color: rgb(46, 26, 26);
+			font-size: clamp(15px, calc(1rem + 10px), 30px);
+			&:hover,
+			&:active {
+				background-color: rgba($ship-sunk, 1);
+			}
+			&:active {
+				box-shadow: 0 0 5px rgba($dark-light, 0.5);
+			}
+		}
+	}
 }

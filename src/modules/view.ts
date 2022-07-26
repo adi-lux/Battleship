@@ -3,7 +3,7 @@ import { PlayerView } from './views/player-view';
 import { OpponentView } from './views/opponent-view';
 import { Controller } from './controller';
 export class View {
-	controller
+	controller;
 	model;
 	startView;
 	playerView;
@@ -21,5 +21,6 @@ export class View {
 			this.opponentView,
 		]);
 		this.model.updateObservers();
+		console.log(3);
 	}
 }
