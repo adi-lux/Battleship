@@ -2,10 +2,7 @@ export {};
 
 declare global {
   const enum Direction {
-    vertical,
-    horizontal,
+    horizontal = 1,
+    vertical = 2,
   }
-
-  const BATTLESHIP_ROWS = 10;
-  const BATTLESHIP_COLS = 10;
 }
