@@ -1,11 +1,6 @@
 import { GameBoard } from './game-board';
 
-interface PlayerInterface {
-	name: string;
-	isTurn: boolean;
-	isWinner: boolean;
-	currentBoard: GameBoard;
-}
+
 
 export class Player implements PlayerInterface {
 	name: string;

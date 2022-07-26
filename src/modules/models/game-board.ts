@@ -1,11 +1,5 @@
 import { Ship } from './ship-factory';
 
-interface GameBoardTemplate {
-	BattleshipCols: number;
-	BattleshipRows: number;
-	shipCount: number;
-	finalBoard: (boolean | Ship)[][];
-}
 
 export class GameBoard implements GameBoardTemplate {
 	readonly BattleshipCols = 10;
@@ -16,7 +10,7 @@ export class GameBoard implements GameBoardTemplate {
 	constructor() {
 		this.finalBoard = new Array(10)
 			.fill(false)
-			.map((x) => Array(10).fill(false));
+			.map(() => Array(10).fill(false));
 
 		this.shipCount = 0;
 	}
@@ -44,7 +38,6 @@ export class GameBoard implements GameBoardTemplate {
 	}
 
 	traverseBoard(x: number, y: number, dir: Direction, length: number): number {
-		// find the "head" of ship -> will alows be up or left so -1
 		let hitIndex = 0;
 		if (dir === Direction.horizontal) {
 			while (hitIndex <= length) {

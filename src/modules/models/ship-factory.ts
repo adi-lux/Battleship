@@ -1,8 +1,4 @@
-interface ShipKind {
-	length: number;
-	direction: Direction;
-	hitList?: boolean[];
-}
+
 
 export class Ship implements ShipKind {
 	length: number;
@@ -21,7 +17,7 @@ export class Ship implements ShipKind {
 	}
 
 	isSunk(): boolean {
-		for (let hitVal of this.hitList) {
+		for (const hitVal of this.hitList) {
 			if (!hitVal) {
 				return false;
 			}
