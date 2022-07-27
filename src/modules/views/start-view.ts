@@ -40,6 +40,11 @@ export class StartView implements ViewType {
 		// </div>;
 
 		const mainDiv = document.getElementById('game-container');
+		mainDiv?.remove();
+
+		const newMain = document.createElement('div');
+		newMain.id = 'game-container';
+
 		const addFragment = document.createDocumentFragment();
 
 		const startScreen = document.createElement('div');
@@ -73,7 +78,8 @@ export class StartView implements ViewType {
 
 		addFragment.appendChild(startScreen);
 
-		mainDiv?.appendChild(addFragment);
+		newMain.appendChild(addFragment);
+		document.body.appendChild(newMain);
 	}
 
 	updateView(model: BattleshipGame) {

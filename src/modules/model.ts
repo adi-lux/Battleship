@@ -43,6 +43,15 @@ export class Model implements BattleshipGame {
 		this.playerOne.currentBoard.placeShip(x, y, dir, length);
 	}
 
+	checkWin(): number {
+		if (this.playerTwo.hasLost()) {
+			return 1;
+		} else if (this.playerOne.hasLost()) {
+			return 2;
+		}
+		return 0;
+	}
+
 	robotSetup() {
 		this.playerTwo.placeShip(2);
 		this.playerTwo.placeShip(3);
@@ -73,6 +82,7 @@ export class Model implements BattleshipGame {
 		this.playerOne = new Player('', true, this.playerOneBoard);
 		this.playerTwo = new BattleshipAI(this.playerTwoBoard);
 		this.stage = 1;
+		this.robotSetup();
 		this.updateObservers();
 	}
 }

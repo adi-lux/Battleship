@@ -48,14 +48,18 @@ export class OpponentView implements ViewType {
 
 				if (typeof opModel[x][y] === 'boolean' && opModel[x][y] === false) {
 					emptySpace.classList.add('unhit-cell');
-					emptySpace.addEventListener('click', this.handleMoves.bind(this));
+					if (model.stage === 3) {
+						emptySpace.addEventListener('click', this.handleMoves.bind(this));
+					}
 				} else if (
 					typeof opModel[x][y] === 'boolean' &&
 					opModel[x][y] === true
 				) {
 					emptySpace.classList.add('missed-cell');
 				} else if (!model.enemyBoard().checkSpotHitBool(x, y)) {
-					emptySpace.addEventListener('click', this.handleMoves.bind(this));
+					if (model.stage === 3) {
+						emptySpace.addEventListener('click', this.handleMoves.bind(this));
+					}
 
 					emptySpace.classList.add('unhit-cell');
 				} else if ((model.enemyBoard().checkBoard(x, y) as newShip).isSunk()) {

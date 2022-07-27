@@ -136,3 +136,19 @@ body,
 .preview {
 	background-color: rgba($highlight, 0.7);
 }
+
+.restart {
+	position: absolute;
+	font-size: clamp(0.5rem, 0.6rem, 3rem);
+	margin-top: 5vh;
+	height: 50%;
+	left: 30%;
+	right: 30%;
+	text-align: center;
+	button {
+		border-radius: 10px;
+		background-color: ghostwhite;
+		width: 60%;
+		height: 20px;
+	}
+}

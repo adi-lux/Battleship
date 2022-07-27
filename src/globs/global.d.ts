@@ -10,6 +10,7 @@ declare global {
 		starting = 1,
 		placing = 2,
 		playing = 3,
+		winner = 4
 	}
 	interface ShipKind {
 		length: number;
@@ -47,6 +48,7 @@ declare global {
 		playerBoard(): GameBoardTemplate;
 		enemyBoard(): GameBoardTemplate;
 		reset(): void;
+		checkWin(): number;
 	}
 	interface ControllerType {
 		model: BattleshipGame;

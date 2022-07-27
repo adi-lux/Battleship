@@ -236,6 +236,12 @@ export class PlayerView implements ViewType {
 		gameBoard?.appendChild(newBoardFragment);
 	}
 	updateView(model: BattleshipGame) {
+		if (model.stage === 2) {
+			if (this.totalShipLength === 17) {
+				this.curDirection = 1;
+				this.totalShipLength = 0;
+			}
+		}
 		if (model.stage !== 1) {
 			this.buildView(model);
 		}
