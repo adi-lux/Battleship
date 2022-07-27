@@ -1,6 +1,5 @@
 import { Ship } from './ship-factory';
 
-
 export class GameBoard implements GameBoardTemplate {
 	readonly BattleshipCols = 10;
 	readonly BattleshipRows = 10;
@@ -25,10 +24,10 @@ export class GameBoard implements GameBoardTemplate {
 		const totalY = y + length;
 
 		if (
-			(direction === Direction.horizontal &&
+			(direction === 1 &&
 				totalX <= this.BattleshipCols &&
 				y < this.BattleshipRows) ||
-			(direction === Direction.vertical &&
+			(direction === 2 &&
 				totalY <= this.BattleshipRows &&
 				x < this.BattleshipCols)
 		) {
@@ -39,7 +38,7 @@ export class GameBoard implements GameBoardTemplate {
 
 	traverseBoard(x: number, y: number, dir: Direction, length: number): number {
 		let hitIndex = 0;
-		if (dir === Direction.horizontal) {
+		if (dir === 1) {
 			while (hitIndex <= length) {
 				if (
 					x - hitIndex < 0 ||
@@ -49,7 +48,7 @@ export class GameBoard implements GameBoardTemplate {
 				}
 				hitIndex += 1;
 			}
-		} else if (dir === Direction.vertical) {
+		} else if (dir === 2) {
 			while (hitIndex <= length) {
 				if (
 					y - hitIndex < 0 ||
@@ -67,6 +66,16 @@ export class GameBoard implements GameBoardTemplate {
 		return this.finalBoard[x][y];
 	}
 
+	checkSpotHit(x: number, y: number): number {
+		const boardSpot = this.checkBoard(x, y) as Ship;
+		return this.traverseBoard(x, y, boardSpot.direction, boardSpot.length);
+	}
+
+	checkSpotHitBool(x: number, y: number): boolean {
+		const spot = this.checkSpotHit(x, y);
+		return (this.checkBoard(x, y) as Ship).isHit(spot);
+	}
+
 	checkAllSunk() {
 		let totalSunk = 0;
 
@@ -76,7 +85,7 @@ export class GameBoard implements GameBoardTemplate {
 				if (
 					typeof boardSpot !== 'boolean' &&
 					boardSpot.isSunk() &&
-					this.traverseBoard(i, j, boardSpot.direction, boardSpot.length) === 0
+					this.checkSpotHit(i, j) === 0
 				) {
 					totalSunk += 1;
 				}
@@ -94,16 +103,13 @@ export class GameBoard implements GameBoardTemplate {
 	): boolean {
 		const newShip = new Ship({ length, direction });
 
-		if (
-			direction === Direction.horizontal &&
-			this.checkValidPlacement(x, y, direction, length)
-		) {
+		if (direction === 1 && this.checkValidPlacement(x, y, direction, length)) {
 			for (let i = 0; i < length; i++) {
 				this.finalBoard[x + i][y] = newShip;
 			}
 			this.shipCount += 1;
 		} else if (
-			direction === Direction.vertical &&
+			direction === 2 &&
 			this.checkValidPlacement(x, y, direction, length)
 		) {
 			for (let i = 0; i < length; i++) {

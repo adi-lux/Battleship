@@ -1,8 +1,6 @@
-import { Model } from '../model';
-
 export class StartController implements ControllerType {
-	model: Model;
-	constructor(givenModel: Model) {
+	model;
+	constructor(givenModel: BattleshipGame) {
 		this.model = givenModel;
 	}
 
@@ -13,6 +11,7 @@ export class StartController implements ControllerType {
 		}
 		console.log(assignedName);
 		this.model.setName(assignedName);
+		this.model.stage = 2;
 		this.model.updateObservers();
 	}
 }

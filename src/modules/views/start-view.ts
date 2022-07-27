@@ -76,8 +76,8 @@ export class StartView implements ViewType {
 		mainDiv?.appendChild(addFragment);
 	}
 
-	updateView(model : BattleshipGame) {
-		if (!model.gameStart) {
+	updateView(model: BattleshipGame) {
+		if (model.stage === 1) {
 			this.buildView();
 		}
 	}

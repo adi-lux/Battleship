@@ -1,5 +1,3 @@
-
-
 export class Ship implements ShipKind {
 	length: number;
 	direction: Direction; // Ships are implemented top-down or left-right
@@ -16,6 +14,9 @@ export class Ship implements ShipKind {
 		this.hitList[hitNum] = true;
 	}
 
+	isHit(hitNum: number): boolean {
+		return this.hitList[hitNum];
+	}
 	isSunk(): boolean {
 		for (const hitVal of this.hitList) {
 			if (!hitVal) {

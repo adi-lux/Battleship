@@ -4,18 +4,17 @@ import { BattleshipAI, Player } from './models/player';
 export class Model implements BattleshipGame {
 	playerOne: Player;
 	playerTwo: BattleshipAI;
-	playerOneBoard: GameBoard;
-	playerTwoBoard: GameBoard;
+	private playerOneBoard: GameBoard;
+	private playerTwoBoard: GameBoard;
 	observers: ViewType[];
-	gameStart: boolean;
-
+	stage: Stage;
 	constructor() {
 		this.playerOneBoard = new GameBoard();
 		this.playerTwoBoard = new GameBoard();
 		this.playerOne = new Player('', true, this.playerOneBoard);
 		this.playerTwo = new BattleshipAI(this.playerTwoBoard);
 		this.observers = [];
-		this.gameStart = false;
+		this.stage = 1;
 	}
 
 	addObservers(newViews: ViewType[]) {
@@ -73,6 +72,7 @@ export class Model implements BattleshipGame {
 		this.playerTwoBoard = new GameBoard();
 		this.playerOne = new Player('', true, this.playerOneBoard);
 		this.playerTwo = new BattleshipAI(this.playerTwoBoard);
+		this.stage = 1;
 		this.updateObservers();
 	}
 }

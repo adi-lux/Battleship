@@ -1,7 +1,5 @@
 import { GameBoard } from './game-board';
 
-
-
 export class Player implements PlayerInterface {
 	name: string;
 	isTurn: boolean;
@@ -58,10 +56,7 @@ export class BattleshipAI extends Player {
 	}
 
 	private checkShip(x: number, y: number, dir: Direction, length: number) {
-		if (
-			dir === Direction.vertical &&
-			y + length < this.currentBoard.BattleshipRows
-		) {
+		if (dir === 2 && y + length < this.currentBoard.BattleshipRows) {
 			for (let i = y; i < y + length; i++) {
 				if (
 					typeof this.currentBoard.checkBoard(x, i) !== 'boolean' ||
@@ -74,10 +69,7 @@ export class BattleshipAI extends Player {
 			for (let i = y; i < y + length; i++) {
 				this.placeList.add([x, i]);
 			}
-		} else if (
-			dir === Direction.horizontal &&
-			x + length < this.currentBoard.BattleshipCols
-		) {
+		} else if (dir === 1 && x + length < this.currentBoard.BattleshipCols) {
 			for (let i = x; i < x + length; i++) {
 				if (
 					typeof this.currentBoard.checkBoard(i, y) !== 'boolean' ||
